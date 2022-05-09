@@ -1,0 +1,23 @@
+{
+  "name": "2022dev-matching",
+  "version": "1.0.0",
+  "description": "<h1 align=\"center\">프로그래밍 언어 검색</h1> <p align=\"center\">프로그래머스 2022 Dev-Matching: 웹 프론트엔드 개발자 (상반기) 과제<br/> Vanilla JS 프로그래밍 언어 검색</p> <p align=\"center\"><a href=\"\" target=\"_blank\">DEMO</a></p>",
+  "main": "index.js",
+  "scripts": {
+    "start": "serve -s"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyunjinee/2022Dev-Matching.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hyunjinee/2022Dev-Matching/issues"
+  },
+  "homepage": "https://github.com/hyunjinee/2022Dev-Matching#readme",
+  "dependencies": {
+    "serve": "^13.0.2"
+  }
+}
