@@ -56,7 +56,6 @@ export default function Suggestion({ $target, initialState, onSelect }) {
     if (!item.includes(keyword)) {
       return item
     }
-
     const matchedText = item.match(new RegExp(keyword, "gi"))[0]
     return item.replace(
       new RegExp(matchedText, "gi"),
@@ -65,7 +64,12 @@ export default function Suggestion({ $target, initialState, onSelect }) {
   }
 
   this.render = () => {
-    const { items = [], selectedIndex, keyword } = this.state
+    const {
+      items = [],
+      selectedIndex,
+      keyword = localStorage.getItem("keyword"),
+    } = this.state
+    console.log(keyword)
     if (items.length > 0) {
       this.$element.style.display = "block"
       this.$element.innerHTML = `

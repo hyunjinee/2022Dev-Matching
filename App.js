@@ -48,6 +48,7 @@ export default function App({ $target }) {
         const languages = await fetchedLanguages(keyword)
         this.setState({
           fetchedLanguages: languages,
+          keyword,
         })
       }
     },
@@ -58,6 +59,7 @@ export default function App({ $target }) {
     initialState: {
       selectedIndex: 0,
       items: this.state.fetchedLanguages ?? [],
+      keyword: this.state.keyword ?? "",
     },
     onSelect: (language) => {
       alert(language)
