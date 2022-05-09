@@ -5,9 +5,13 @@ import SelectedLanguage from "./src/components/SelectedLanguage.js"
 import { fetchedLanguages } from "./src/utils/api.js"
 
 export default function App({ $target }) {
-  this.state = {
-    fetchedLanguages: [],
-    selectedLanguages: [],
+  if (localStorage.getItem("appState")) {
+    this.state = JSON.parse(localStorage.getItem("appState"))
+  } else {
+    this.state = {
+      fetchedLanguages: [],
+      selectedLanguages: [],
+    }
   }
 
   this.setState = (nextState) => {
@@ -15,6 +19,8 @@ export default function App({ $target }) {
       ...this.state,
       ...nextState,
     }
+
+    localStorage.setItem("appState", JSON.stringify(this.state))
 
     suggestion.setState({
       selectedIndex: 0,
@@ -26,13 +32,14 @@ export default function App({ $target }) {
 
   const selectedLanguages = new SelectedLanguage({
     $target,
-    initialState: [],
+    initialState: this.state.selectedLanguages ?? [],
   })
 
   const searchInput = new SearchInput({
     $target,
-    initialState: "",
+    initialState: localStorage.getItem("keyword") || "",
     onChange: async (keyword) => {
+      localStorage.setItem("keyword", keyword)
       if (keyword.length === 0) {
         this.setState({
           fetchedLanguages: [],
@@ -50,7 +57,7 @@ export default function App({ $target }) {
     $target,
     initialState: {
       selectedIndex: 0,
-      items: [],
+      items: this.state.fetchedLanguages ?? [],
     },
     onSelect: (language) => {
       alert(language)

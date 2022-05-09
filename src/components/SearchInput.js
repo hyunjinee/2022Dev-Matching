@@ -1,3 +1,5 @@
+import debounce from "../utils/debounce.js"
+
 export default function SearchInput({ $target, initialState, onChange }) {
   this.$element = document.createElement("form")
   this.$element.className = "SearchInput"
@@ -5,19 +7,23 @@ export default function SearchInput({ $target, initialState, onChange }) {
 
   $target.appendChild(this.$element)
 
-  this.$element.addEventListener("keyup", (e) => {
-    const actionIgnoreKeys = [
-      "Enter",
-      "ArrowUp",
-      "ArrowDown",
-      "ArrowLeft",
-      "ArrowRight",
-    ]
+  // api call에 debounce를 적용
+  this.$element.addEventListener(
+    "keyup",
+    debounce((e) => {
+      const actionIgnoreKeys = [
+        "Enter",
+        "ArrowUp",
+        "ArrowDown",
+        "ArrowLeft",
+        "ArrowRight",
+      ]
 
-    if (!actionIgnoreKeys.includes(e.key)) {
-      onChange(e.target.value)
-    }
-  })
+      if (!actionIgnoreKeys.includes(e.key)) {
+        onChange(e.target.value)
+      }
+    }, 200)
+  )
 
   this.$element.addEventListener("submit", (e) => {
     e.preventDefault()
