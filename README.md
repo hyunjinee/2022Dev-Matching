@@ -1,17 +1,16 @@
 <h1 align="center">프로그래밍 언어 검색</h1>
+
+<img width="790" alt="image" src="https://user-images.githubusercontent.com/63354527/167340147-c603b1da-eecc-4347-8b3c-4ccb1c4396b9.png">
+
 <p align="center">프로그래머스 2022 Dev-Matching: 웹 프론트엔드 개발자 (상반기) 과제<br/> Vanilla JS 프로그래밍 언어 검색</p>
 <p align="center"><a href="" target="_blank">DEMO</a></p>
 
-## 🎯 요구사항
+## Description
 
-- [ ] 처음 화면에 접속하면 input 하나만 떠있습니다.
-- [ ] 여기서 키보드를 통해 검색 키워드를 입력하면 input 아래에 입력한 검색어를 기준으로 언어 목록을 렌더링합니다. 추천 검색어는 아래 설명된 API를 통해 요청합니다.
-<!-- - [ ] 메뉴가 추가되고 나면, input은 빈 값으로 초기화한다.
-- [ ] 사용자 입력값이 빈 값이라면 추가되지 않는다.
+<img width="632" alt="image" src="https://user-images.githubusercontent.com/63354527/167340406-3b69d02e-f154-4aaf-b207-aac861372a9f.png">
 
-- [ ] 메뉴의 수정 버튼을 눌러 메뉴 이름 수정할 수 있다.
-  - [ ] 메뉴 수정시 브라우저에서 제공하는 `prompt` 인터페이스를 활용한다.
-- [ ] 메뉴 삭제 버튼을 이용하여 메뉴 삭제할 수 있다.
-  - [ ] 메뉴 삭제시 브라우저에서 제공하는 `confirm` 인터페이스를 활용한다.
-- [ ] 총 메뉴 갯수를 count하여 상단에 보여준다.
-- 추가되는 메뉴의 아래 마크업은 `<ul id="espresso-menu-list" class="mt-3 pl-0"></ul>` 안에 삽입해야 한다. -->
+화면에 구현해야하는 부분들을 위와 같이 쪼개서 생각해 볼 수 있다. 각 컴포넌트는 아래와 같은 관계를 갖는다.
+
+<img width="752" alt="image" src="https://user-images.githubusercontent.com/63354527/167340528-4f007efa-c349-49f1-b9b3-3b568eae0134.png">
+
+App 컴포넌트가 세 컴포넌트를 제어하는 형태이고, SelectedLanguages, SearchInput, Suggestion 각각의 컴포넌트는 서로의 의존성을 띄지 않는 형태로 작성해야 추후 재사용 가능한 컴포넌트가 된다.
