@@ -1,5 +1,6 @@
 import SearchInput from "./src/components/SearchInput.js"
 import Suggestion from "./src/components/Suggestion.js"
+
 import { fetchedLanguages } from "./src/utils/api.js"
 
 export default function App({ $target }) {
@@ -15,6 +16,7 @@ export default function App({ $target }) {
     }
 
     suggestion.setState({
+      selectedIndex: 0,
       items: this.state.fetchedLanguages,
     })
   }
@@ -39,6 +41,7 @@ export default function App({ $target }) {
   const suggestion = new Suggestion({
     $target,
     initialState: {
+      cursor: 0,
       items: [],
     },
   })
